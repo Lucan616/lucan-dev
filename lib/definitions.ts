@@ -8,3 +8,5 @@ export type Job = {
   endDate: Date | null;
   description: string;
 };
+
+export type Socials = Record<string, { href: string; handle: string }>;

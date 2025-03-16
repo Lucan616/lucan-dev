@@ -63,7 +63,7 @@ export default function JobCard({
           </p>
         </div>
       </article>
-      <DialogContent>
+      <DialogContent className="max-h-[90vh] overflow-auto">
         <div className="h-44 px-14 py-12">
           <Image
             src={companyLogo}

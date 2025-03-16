@@ -1,11 +1,19 @@
+import { differenceInYears } from "date-fns";
 import type { Job } from "./definitions";
 import LoopLogo from "@/public/company-logos/loop.svg";
 import LancetLogo from "@/public/company-logos/lancet-logo-white.png";
 import ITGenieLogo from "@/public/company-logos/itgenie-logo-white.png";
 
+export const EMAIL = "lucangrobler6@gmail.com";
+
 export const CAREER_START_DATE = new Date("2019-06-01");
 
-export const EXPERIENCE: Job[] = [
+export const YEARS_EXPERIENCE = differenceInYears(
+  new Date(),
+  CAREER_START_DATE,
+);
+
+export const JOBS: Job[] = [
   {
     companyLogo: LoopLogo,
     companyName: "Loop",
@@ -53,3 +61,22 @@ export const TECH_SKILLS = [
   "Recharts",
   "Figma",
 ];
+
+export const SOCIALS = {
+  twitter: {
+    href: "https://twitter.com/@Lucan_G",
+    handle: "@Lucan_G",
+  },
+  bluesky: {
+    href: "https://bsky.app/profile/lucan.dev",
+    handle: "@lucan.dev",
+  },
+  gitHub: {
+    href: "https://github.com/Lucan616",
+    handle: "Lucan616",
+  },
+  linkedIn: {
+    href: "https://linkedin.com/in/lucan-grobler",
+    handle: "Lucan Grobler",
+  },
+} as const;

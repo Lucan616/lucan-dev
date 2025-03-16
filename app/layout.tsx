@@ -1,8 +1,10 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Hedvig_Letters_Serif } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/navbar";
+import MainNav from "@/components/main-nav";
+import SiteFooter from "@/components/site-footer";
+import { YEARS_EXPERIENCE } from "@/lib/constants";
 
 const hedvigLettersSerif = Hedvig_Letters_Serif({
   subsets: ["latin"],
@@ -12,8 +14,7 @@ const hedvigLettersSerif = Hedvig_Letters_Serif({
 
 export const metadata: Metadata = {
   title: "Hi, I'm Lucan",
-  description:
-    "Hi, I'm Lucan, a front-end developer with more than 5 years experience.",
+  description: `Hi, I'm Lucan, a front-end developer with more than ${YEARS_EXPERIENCE} years experience.`,
 };
 
 export default function RootLayout({
@@ -34,8 +35,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
+          <MainNav />
           {children}
+          <SiteFooter />
         </ThemeProvider>
       </body>
     </html>
