@@ -7,7 +7,7 @@ import SiteFooter from "@/components/site-footer";
 import { YEARS_EXPERIENCE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const hedvigLettersSerif = Hedvig_Letters_Serif({
   subsets: ["latin"],
