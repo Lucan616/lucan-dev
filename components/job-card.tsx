@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Badge } from "./ui/badge";
 
 const dateOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
@@ -35,7 +36,7 @@ export default function JobCard({
     <Dialog>
       <article
         className={cn(
-          "relative rounded-xl bg-muted/50 ring-1 ring-white/10",
+          "bg-muted/50 relative rounded-xl ring-1 ring-white/10",
           className,
         )}
         {...props}
@@ -58,12 +59,12 @@ export default function JobCard({
             {" - "}
             {endDateString}
           </p>
-          <p className="line-clamp-5 font-hedvig-serif font-light tracking-wider text-muted-foreground">
+          <p className="line-clamp-5 leading-normal font-light tracking-wide text-gray-400">
             {description}
           </p>
         </div>
       </article>
-      <DialogContent className="max-h-[90vh] overflow-auto">
+      <DialogContent className="gap-2 p-6 md:max-w-lg">
         <div className="h-44 px-14 py-12">
           <Image
             src={companyLogo}
@@ -71,16 +72,20 @@ export default function JobCard({
             className="size-full object-contain"
           />
         </div>
-        <DialogTitle>{companyName}</DialogTitle>
-        <p className="mb-2 text-sm font-light">{title}</p>
-        <p className="mb-2 text-sm">
-          {startDateString}
-          {" - "}
-          {endDateString}
-        </p>
-        <DialogDescription className="font-hedvig-serif leading-6 tracking-wider">
-          {description}
-        </DialogDescription>
+        <div className="flex items-center gap-3">
+          <DialogTitle className="text-2xl">{companyName} </DialogTitle>
+          <Badge className="dark:bg-blue-950 dark:text-blue-300">
+            {startDateString}
+            {" - "}
+            {endDateString}
+          </Badge>
+        </div>
+        <h3 className="mb-2 text-lg font-extralight">{title}</h3>
+        <div className="no-scrollbar max-h-[40vh] overflow-y-auto">
+          <p className="leading-normal font-light tracking-wide text-gray-300">
+            {description}
+          </p>
+        </div>
       </DialogContent>
     </Dialog>
   );

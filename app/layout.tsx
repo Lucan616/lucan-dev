@@ -1,10 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Hedvig_Letters_Serif } from "next/font/google";
+import { Hedvig_Letters_Serif, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import MainNav from "@/components/main-nav";
 import SiteFooter from "@/components/site-footer";
 import { YEARS_EXPERIENCE } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const hedvigLettersSerif = Hedvig_Letters_Serif({
   subsets: ["latin"],
@@ -25,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hedvigLettersSerif.variable}`}
+      className={cn("font-sans", geist.variable, hedvigLettersSerif.variable)}
       suppressHydrationWarning
     >
       <body>

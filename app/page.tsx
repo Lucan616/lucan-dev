@@ -1,15 +1,15 @@
 // import Link from "next/link";
 import JobCard from "@/components/job-card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { EMAIL, JOBS, TECH_SKILLS, YEARS_EXPERIENCE } from "@/lib/constants";
 
 export default function Home() {
   return (
     <main className="mx-auto max-w-7xl px-5">
       {/* HERO SECTION */}
-      <section className="mb-48 mt-40 flex flex-col items-center">
-        <h1 className="mb-5 font-hedvig-serif text-[clamp(3.5rem,15vw,10rem)] leading-none">
+      <section className="mt-40 mb-48 flex flex-col items-center">
+        <h1 className="font-hedvig-serif mb-5 text-[clamp(3.5rem,15vw,10rem)] leading-none">
           <span className="text-xl tracking-widest sm:text-2xl md:text-3xl">
             Hi, I&apos;m
           </span>
@@ -19,7 +19,7 @@ export default function Home() {
              * @note `tracking-*` or `letter-spacing` styling adds spacing after the last character, `dir="rtl"` and `-indent-*` fixes this.
              * */
             dir="rtl"
-            className="inline-block -indent-6 uppercase tracking-[1.5rem] sm:-indent-8 sm:tracking-[2rem]"
+            className="inline-block -indent-6 tracking-[1.5rem] uppercase sm:-indent-8 sm:tracking-[2rem]"
           >
             Lucan
           </span>
@@ -28,14 +28,19 @@ export default function Home() {
           A front-end developer with {YEARS_EXPERIENCE} years experience.
         </p>
         <div className="mt-12 flex flex-col justify-center gap-3 sm:mt-10 sm:flex-row md:gap-5">
-          <Button size="lg" asChild>
-            <a href="/Lucan's CV - 2024.pdf" download>
-              Download my CV
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" asChild>
-            <a href={`mailto:${EMAIL}`}>Send me an email</a>
-          </Button>
+          <a
+            href="/Lucan's CV - 2024.pdf"
+            download
+            className={buttonVariants({ size: "lg" })}
+          >
+            Download my CV
+          </a>
+          <a
+            href={`mailto:${EMAIL}`}
+            className={buttonVariants({ variant: "outline", size: "lg" })}
+          >
+            Send me an email
+          </a>
         </div>
       </section>
 
@@ -44,9 +49,11 @@ export default function Home() {
         <h2 className="mb-16 text-center text-3xl font-semibold tracking-wide md:text-4xl">
           Tech I&apos;ve Worked With
         </h2>
-        <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-3">
+        <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-2.5">
           {TECH_SKILLS.map((tech) => (
-            <Badge key={tech}>{tech}</Badge>
+            <Badge key={tech} className="rounded-sm">
+              {tech}
+            </Badge>
           ))}
         </div>
       </section>

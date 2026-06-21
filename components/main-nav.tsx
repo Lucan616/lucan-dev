@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MenuIcon, XIcon } from "lucide-react";
 import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -13,12 +13,13 @@ import {
 } from "@/components/ui/drawer";
 import { Separator } from "@/components/ui/separator";
 import { EMAIL, SOCIALS, YEARS_EXPERIENCE } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export default function MainNav() {
   return (
     <Drawer direction="left">
       <header className="fixed inset-x-0 top-0 z-10 px-5">
-        <div className="mx-auto mt-5 flex h-16 max-w-6xl items-center rounded-xl bg-muted/10 px-4 ring-1 ring-white/5 backdrop-blur-md sm:px-8">
+        <div className="bg-muted/10 mx-auto mt-5 flex h-16 max-w-6xl items-center rounded-xl px-4 ring-1 ring-white/5 backdrop-blur-md sm:px-8">
           <DrawerTrigger asChild>
             <Button size="icon" variant="outline" className="mr-6 sm:hidden">
               <MenuIcon />
@@ -26,65 +27,62 @@ export default function MainNav() {
           </DrawerTrigger>
           <Link
             href="/"
-            className="font-hedvig-serif text-2xl uppercase tracking-[0.4rem]"
+            className="font-hedvig-serif text-2xl tracking-[0.4rem] uppercase"
           >
             Lucan
           </Link>
-          <span className="ml-8 hidden text-sm text-muted-foreground md:inline">
+          <span className="text-muted-foreground ml-8 hidden text-sm md:inline">
             Front-end developer for {YEARS_EXPERIENCE} years
           </span>
           <div className="ml-auto space-x-2">
-            <Button variant="ghost" className="hidden sm:inline-flex" asChild>
-              <Link href={`mailto:${EMAIL}`}>Email</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/Lucan's CV - 2024.pdf" download>
-                Download CV
-              </Link>
-            </Button>
+            <Link
+              href={`mailto:${EMAIL}`}
+              className={cn(
+                buttonVariants({ variant: "ghost" }),
+                "hidden sm:inline-flex",
+              )}
+            >
+              Email
+            </Link>
+            <Link
+              href="/Lucan's CV - 2024.pdf"
+              download
+              className={buttonVariants({ variant: "outline" })}
+            >
+              Download CV
+            </Link>
           </div>
           <Separator
             orientation="vertical"
-            className="mx-5 hidden h-8 sm:block"
+            className="mx-5 my-4 hidden sm:block"
           />
           <div className="-mr-2 hidden space-x-1 sm:block">
-            <Button
-              size="icon"
-              variant="ghost"
-              className="[&_svg]:size-5"
-              asChild
+            <Link
+              href={SOCIALS.gitHub.href}
+              target="_blank"
+              rel="noreferrer"
+              className={buttonVariants({ variant: "ghost", size: "icon-lg" })}
             >
-              <Link href={SOCIALS.gitHub.href} target="_blank" rel="noreferrer">
-                <Icons.gitHub />
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </Button>
-            <Button
-              size="icon"
-              variant="ghost"
-              className="[&_svg]:size-5"
-              asChild
+              <Icons.gitHub className="size-5" />
+              <span className="sr-only">GitHub</span>
+            </Link>
+            <Link
+              href={SOCIALS.linkedIn.href}
+              target="_blank"
+              rel="noreferrer"
+              className={buttonVariants({ variant: "ghost", size: "icon-lg" })}
             >
-              <Link
-                href={SOCIALS.linkedIn.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Icons.linkedIn />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-            </Button>
+              <Icons.linkedIn className="size-5" />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
           </div>
         </div>
       </header>
 
       {/* MOBILE MENU DRAWER */}
-      <DrawerContent
-        handle={false}
-        className="inset-y-0 left-0 mt-0 w-[85vw] max-w-md rounded-t-none border-y-0 border-r"
-      >
-        <DrawerHeader className="flex items-center justify-between text-left">
-          <DrawerTitle className="font-hedvig-serif text-2xl uppercase tracking-[0.4rem]">
+      <DrawerContent>
+        <DrawerHeader className="flex-row justify-between">
+          <DrawerTitle className="font-hedvig-serif text-2xl tracking-[0.4rem] uppercase">
             Lucan
           </DrawerTitle>
           <DrawerClose asChild>
@@ -95,14 +93,22 @@ export default function MainNav() {
         </DrawerHeader>
         <div className="mb-5 flex h-full flex-col px-4">
           <div className="grid gap-4">
-            <Button size="lg" className="w-full" asChild>
-              <a href="/Lucan's CV - 2024.pdf" download>
-                Download my CV
-              </a>
-            </Button>
-            <Button size="lg" className="w-full" variant="outline" asChild>
-              <a href={`mailto:${EMAIL}`}>Send me an email</a>
-            </Button>
+            <a
+              href="/Lucan's CV - 2024.pdf"
+              download
+              className={cn(buttonVariants({ size: "lg" }), "w-full")}
+            >
+              Download my CV
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "w-full",
+              )}
+            >
+              Send me an email
+            </a>
           </div>
           {/* SOCIALS */}
           <div className="mt-auto grid gap-0.5">
@@ -110,18 +116,19 @@ export default function MainNav() {
               const Icon = Icons[key as keyof typeof SOCIALS];
 
               return (
-                <Button
+                <a
                   key={key}
-                  variant="ghost"
-                  size="lg"
-                  className="w-full justify-start px-4"
-                  asChild
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(
+                    buttonVariants({ variant: "ghost", size: "lg" }),
+                    "w-full justify-start px-4",
+                  )}
                 >
-                  <a href={href} target="_blank" rel="noreferrer">
-                    <Icon className="mr-4 size-6 fill-current" />
-                    {handle}
-                  </a>
-                </Button>
+                  <Icon className="mr-4 size-5 fill-current" />
+                  {handle}
+                </a>
               );
             })}
           </div>
