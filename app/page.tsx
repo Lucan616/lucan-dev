@@ -9,7 +9,7 @@ export default function Home() {
     <main className="mx-auto max-w-7xl px-5">
       {/* HERO SECTION */}
       <section className="mb-48 mt-40 flex flex-col items-center">
-        <h1 className="mb-5 font-hedvig-serif text-[clamp(3.5rem,_15vw,_10rem)] leading-none">
+        <h1 className="mb-5 font-hedvig-serif text-[clamp(3.5rem,15vw,10rem)] leading-none">
           <span className="text-xl tracking-widest sm:text-2xl md:text-3xl">
             Hi, I&apos;m
           </span>
@@ -19,7 +19,7 @@ export default function Home() {
              * @note `tracking-*` or `letter-spacing` styling adds spacing after the last character, `dir="rtl"` and `-indent-*` fixes this.
              * */
             dir="rtl"
-            className="inline-block -indent-[1.5rem] uppercase tracking-[1.5rem] sm:-indent-[2rem] sm:tracking-[2rem]"
+            className="inline-block -indent-6 uppercase tracking-[1.5rem] sm:-indent-8 sm:tracking-[2rem]"
           >
             Lucan
           </span>
