@@ -3,6 +3,7 @@ import JobCard from "@/components/job-card";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { EMAIL, JOBS, TECH_SKILLS, YEARS_EXPERIENCE } from "@/lib/constants";
+import { FileDownIcon, MailIcon, SendIcon } from "lucide-react";
 
 export default function Home() {
   return (
@@ -29,17 +30,19 @@ export default function Home() {
         </p>
         <div className="mt-12 flex flex-col justify-center gap-3 sm:mt-10 sm:flex-row md:gap-5">
           <a
-            href="/Lucan's CV - 2024.pdf"
+            href="/lucan-cv_2026.pdf"
             download
             className={buttonVariants({ size: "lg" })}
           >
+            <FileDownIcon data-icon="inline-start" />
             Download my CV
           </a>
           <a
             href={`mailto:${EMAIL}`}
             className={buttonVariants({ variant: "outline", size: "lg" })}
           >
-            Send me an email
+            <SendIcon data-icon="inline-start" />
+            Send me an Email
           </a>
         </div>
       </section>

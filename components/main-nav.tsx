@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { MenuIcon, XIcon } from "lucide-react";
+import {
+  FileDownIcon,
+  MailIcon,
+  MenuIcon,
+  SendIcon,
+  XIcon,
+} from "lucide-react";
 import { Icons } from "@/components/icons";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -31,7 +37,7 @@ export default function MainNav() {
           >
             Lucan
           </Link>
-          <span className="text-muted-foreground ml-8 hidden text-sm md:inline">
+          <span className="text-muted-foreground ml-8 line-clamp-1 hidden flex-1 text-sm md:inline">
             Front-end developer for {YEARS_EXPERIENCE} years
           </span>
           <div className="ml-auto space-x-2">
@@ -42,13 +48,15 @@ export default function MainNav() {
                 "hidden sm:inline-flex",
               )}
             >
+              <MailIcon data-icon="inline-start" />
               Email
             </Link>
             <Link
-              href="/Lucan's CV - 2024.pdf"
+              href="/lucan-cv_2026.pdf"
               download
               className={buttonVariants({ variant: "outline" })}
             >
+              <FileDownIcon data-icon="inline-start" />
               Download CV
             </Link>
           </div>
@@ -94,10 +102,11 @@ export default function MainNav() {
         <div className="mb-5 flex h-full flex-col px-4">
           <div className="grid gap-4">
             <a
-              href="/Lucan's CV - 2024.pdf"
+              href="/lucan-cv_2026.pdf"
               download
               className={cn(buttonVariants({ size: "lg" }), "w-full")}
             >
+              <FileDownIcon data-icon="inline-start" />
               Download my CV
             </a>
             <a
@@ -107,7 +116,8 @@ export default function MainNav() {
                 "w-full",
               )}
             >
-              Send me an email
+              <SendIcon data-icon="inline-start" />
+              Send me an Email
             </a>
           </div>
           {/* SOCIALS */}
@@ -133,8 +143,9 @@ export default function MainNav() {
             })}
           </div>
         </div>
-        <DrawerFooter className="border-t text-center text-sm">
-          &copy; {new Date().getFullYear()} | Made by Lucan Grobler
+        <DrawerFooter className="block border-t text-center text-sm">
+          &copy; {new Date().getFullYear()} | Made with 🧠 by{" "}
+          <span className="font-hedvig-serif">Lucan Grobler</span>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

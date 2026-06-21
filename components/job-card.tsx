@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Badge } from "./ui/badge";
+import { buttonVariants } from "./ui/button";
 
 const dateOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
@@ -51,10 +52,10 @@ export default function JobCard({
             className="size-full object-contain"
           />
         </div>
-        <div className="p-5 pt-0">
-          <h3 className="text-lg font-bold">{companyName}</h3>
-          <p className="mb-3 text-sm font-light">{title}</p>
-          <p className="mb-3 text-sm">
+        <div className="space-y-3 p-5 pt-0">
+          <h3 className="mb-0 text-lg font-bold">{companyName}</h3>
+          <p className="text-sm font-light">{title}</p>
+          <p className="text-sm">
             {startDateString}
             {" - "}
             {endDateString}
@@ -62,6 +63,9 @@ export default function JobCard({
           <p className="line-clamp-5 leading-normal font-light tracking-wide text-gray-400">
             {description}
           </p>
+          <div className={cn(buttonVariants({ variant: "outline" }), "w-full")}>
+            Read more
+          </div>
         </div>
       </article>
       <DialogContent className="gap-2 p-6 md:max-w-lg">
